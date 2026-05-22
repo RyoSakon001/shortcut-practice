@@ -6,9 +6,13 @@ var EDITIONS = [
     icon: "images/icon/mac.png",
     questions: [
       {
-        text: "スクリーンショット（範囲選択）を撮るショートカットを実行してください",
-        hint: "⌘ + Shift + 4",
+        text: "離席モードにする",
+        hint: "⌘ + control + Q",
       },
+      // {
+      //   text: "スクリーンショット（範囲選択）を撮り、クリップボードにコピー",
+      //   hint: "⌘ + Shift + control + 4",
+      // },
     ],
   },
   {
@@ -17,24 +21,24 @@ var EDITIONS = [
     icon: "images/icon/chrome.png",
     questions: [
       {
-        text: "新しいウィンドウを開くショートカットを実行してください",
-        hint: "⌘ + N",
-      },
-      {
-        text: "ウィンドウを切り替えるショートカットを実行してください",
-        hint: "⌘ + `",
-      },
-      {
-        text: "新しいタブを開くショートカットを実行してください",
+        text: "新しいタブを開く",
         hint: "⌘ + T",
       },
       {
-        text: "タブを削除するショートカットを実行してください",
+        text: "タブを削除する",
         hint: "⌘ + W",
       },
       {
-        text: "左のタブに移動するショートカットを実行してください",
+        text: "左のタブに移動する",
         hint: "⌘ + Shift + ←",
+      },
+      {
+        text: "新しいウィンドウを開く",
+        hint: "⌘ + N",
+      },
+      {
+        text: "ウィンドウを切り替える",
+        hint: "⌘ + `",
       },
     ],
   },
@@ -44,25 +48,25 @@ var EDITIONS = [
     icon: "images/icon/vscode.png",
     questions: [
       {
-        text: "メニューバーを開閉するショートカットを実行してください",
+        text: "メニューバーを開閉する",
         hint: "⌘ + B",
       },
       {
-        text: "ターミナルを開閉するショートカットを実行してください",
+        text: "ターミナルを開閉する",
         hint: "⌘ + J",
       },
-      {
-        text: "ファイル内検索のショートカットを実行してください",
-        hint: "⌘ + F",
-      },
-      {
-        text: "リポジトリ内検索のショートカットを実行してください",
-        hint: "⌘ + Shift + F",
-      },
-      {
-        text: "ウィンドウを切り替えるショートカットを実行してください",
-        hint: "⌘ + `",
-      },
+      // {
+      //   text: "ファイル内検索の",
+      //   hint: "⌘ + F",
+      // },
+      // {
+      //   text: "リポジトリ内検索の",
+      //   hint: "⌘ + Shift + F",
+      // },
+      // {
+      //   text: "ウィンドウを切り替える",
+      //   hint: "⌘ + `",
+      // },
     ],
   },
   {
@@ -71,41 +75,41 @@ var EDITIONS = [
     icon: "images/icon/slack.png",
     questions: [
       {
-        text: "チャンネルを切り替えるショートカットを実行してください",
+        text: "チャンネルを切り替える",
         hint: "⌘ + K",
       },
-      {
-        text: "ワークスペースを切り替えるショートカットを実行してください",
-        hint: "⌘ + 1, 2, …",
-      },
-      {
-        text: "すべて既読にするショートカットを実行してください",
-        hint: "⌘ + Shift + A → Esc",
-      },
+      // {
+      //   text: "ワークスペースを切り替える",
+      //   hint: "⌘ + 1, 2, …",
+      // },
+      // {
+      //   text: "すべて既読にする",
+      //   hint: "⌘ + Shift + A → Esc",
+      // },
     ],
   },
-  {
-    id: "spreadsheet",
-    name: "スプレッドシート編",
-    icon: "images/icon/spreadsheet.png",
-    questions: [
-      {
-        text: "行全体を選択するショートカットを実行してください",
-        hint: "Shift + Space",
-      },
-    ],
-  },
-  {
-    id: "ai",
-    name: "AI編",
-    icon: "images/icon/ai.png",
-    questions: [
-      {
-        text: "Claude.ai で新しい会話を開始するショートカットを実行してください",
-        hint: "⌘ + Shift + O",
-      },
-    ],
-  },
+  // {
+  //   id: "spreadsheet",
+  //   name: "スプレッドシート編",
+  //   icon: "images/icon/spreadsheet.png",
+  //   questions: [
+  //     {
+  //       text: "行全体を選択する",
+  //       hint: "Shift + Space",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "ai",
+  //   name: "AI編",
+  //   icon: "images/icon/ai.png",
+  //   questions: [
+  //     {
+  //       text: "Claude.ai で新しい会話を開始する",
+  //       hint: "⌘ + Shift + O",
+  //     },
+  //   ],
+  // },
 ];
 
 function getEditionById(id) {
