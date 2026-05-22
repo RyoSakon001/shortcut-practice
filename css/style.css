@@ -1,0 +1,170 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f1419;
+  --surface: #1a2332;
+  --text: #e8edf4;
+  --muted: #8b9cb3;
+  --accent: #3d8bfd;
+  --accent-hover: #5a9dff;
+  --border: #2a3a52;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+    system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+#app {
+  width: 100%;
+  max-width: 36rem;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  min-height: 20rem;
+}
+
+.screen--start {
+  text-align: center;
+  gap: 2.5rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.screen--quiz {
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.progress {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  align-self: flex-start;
+}
+
+.question-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 12rem;
+  padding: 2rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.question {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.hint {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--surface);
+}
+
+.screen--complete {
+  text-align: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+}
+
+.complete-message {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.complete-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
