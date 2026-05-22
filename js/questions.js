@@ -1,6 +1,17 @@
 /** 各編の問題はここに追加していく */
 var EDITIONS = [
   {
+    id: "mac",
+    name: "Mac編",
+    icon: "images/icon/mac.png",
+    questions: [
+      {
+        text: "スクリーンショット（範囲選択）を撮るショートカットを実行してください",
+        hint: "⌘ + Shift + 4",
+      },
+    ],
+  },
+  {
     id: "chrome",
     name: "Chrome編",
     icon: "images/icon/chrome.png",
@@ -70,6 +81,28 @@ var EDITIONS = [
       {
         text: "すべて既読にするショートカットを実行してください",
         hint: "⌘ + Shift + A → Esc",
+      },
+    ],
+  },
+  {
+    id: "spreadsheet",
+    name: "スプレッドシート編",
+    icon: "images/icon/spreadsheet.png",
+    questions: [
+      {
+        text: "行全体を選択するショートカットを実行してください",
+        hint: "Shift + Space",
+      },
+    ],
+  },
+  {
+    id: "ai",
+    name: "AI編",
+    icon: "images/icon/ai.png",
+    questions: [
+      {
+        text: "Claude.ai で新しい会話を開始するショートカットを実行してください",
+        hint: "⌘ + Shift + O",
       },
     ],
   },
