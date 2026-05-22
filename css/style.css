@@ -5,21 +5,25 @@
 }
 
 :root {
-  --bg: #0f1419;
-  --surface: #1a2332;
-  --text: #e8edf4;
-  --muted: #8b9cb3;
-  --accent: #3d8bfd;
-  --accent-hover: #5a9dff;
-  --border: #2a3a52;
+  --bg: #f5f7f8;
+  --surface: #ffffff;
+  --surface-muted: #eceff1;
+  --text: #1a1a2e;
+  --muted: #717182;
+  --primary: #2547f0;
+  --primary-hover: #1d3ad4;
+  --border: #e0e4e8;
+  --accent-gold: #ffd700;
+  --shadow: 0 4px 24px rgba(37, 71, 240, 0.08);
+  --radius: 12px;
+  --radius-lg: 16px;
 }
 
 html,
 body {
   margin: 0;
   min-height: 100%;
-  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
-    system-ui, sans-serif;
+  font-family: "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -66,19 +70,21 @@ body {
   text-align: left;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   color: var(--text);
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
 
 .edition-card:hover {
-  border-color: var(--accent);
-  background: #1e2a3d;
+  border-color: var(--primary);
+  background: #fafbfc;
+  transform: translateY(-1px);
 }
 
 .edition-card:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -96,7 +102,11 @@ body {
 
 .edition-card__count {
   font-size: 0.85rem;
+  font-weight: 500;
   color: var(--muted);
+  background: var(--surface-muted);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
 }
 
 .hero {
@@ -110,12 +120,14 @@ body {
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  color: var(--text);
 }
 
 .subtitle {
   margin: 0;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-weight: 400;
   color: var(--muted);
 }
 
@@ -138,11 +150,13 @@ body {
 .quiz-header__name {
   font-size: 0.95rem;
   font-weight: 600;
+  color: var(--primary);
 }
 
 .progress {
   margin: 0 0 0 auto;
   font-size: 0.875rem;
+  font-weight: 600;
   color: var(--muted);
 }
 
@@ -157,21 +171,27 @@ body {
   padding: 2rem 1.5rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   text-align: center;
+  box-shadow: var(--shadow);
 }
 
 .question {
   margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.7;
+  font-size: 1.2rem;
+  line-height: 1.75;
   font-weight: 500;
 }
 
 .hint {
   margin: 1.25rem 0 0;
+  padding: 0.45rem 0.9rem;
   font-size: 0.9rem;
-  color: var(--muted);
+  font-weight: 600;
+  color: var(--text);
+  background: rgba(255, 215, 0, 0.25);
+  border: 1px solid var(--accent-gold);
+  border-radius: 8px;
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
@@ -186,34 +206,38 @@ body {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
+  font-family: inherit;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: background 0.15s ease, opacity 0.15s ease;
+  transition: background 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
 }
 
 .btn:disabled {
-  opacity: 0.35;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
 .btn--primary {
-  background: var(--accent);
+  background: var(--primary);
   color: #fff;
+  box-shadow: 0 4px 14px rgba(37, 71, 240, 0.35);
 }
 
 .btn--primary:hover:not(:disabled) {
-  background: var(--accent-hover);
+  background: var(--primary-hover);
+  transform: translateY(-1px);
 }
 
 .btn--secondary {
-  background: transparent;
+  background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border);
 }
 
 .btn--secondary:hover:not(:disabled) {
-  background: var(--surface);
+  background: var(--surface-muted);
+  border-color: #d0d5da;
 }
 
 .screen--complete {
@@ -226,6 +250,7 @@ body {
   margin: 0;
   font-size: 1.75rem;
   font-weight: 700;
+  color: var(--text);
 }
 
 .complete-icon {
