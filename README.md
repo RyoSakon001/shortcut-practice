@@ -19,7 +19,7 @@ python3 -m http.server 8080
 {
   id: "chrome",
   name: "Chrome編",
-  icon: "icons/chrome.png",
+  icon: "images/icon/chrome.png",
   questions: [
     { text: "問題文", hint: "⌘ + T" },
   ],

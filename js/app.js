@@ -20,6 +20,7 @@ var modePickerOpen = false;
 var pendingEditionId = null;
 var modePickerMessage = "";
 var app = document.getElementById("app");
+var LOGO_PATH = "images/fignny_chan.jpg";
 
 function buildQuizIndices(edition, mode) {
   var indices = [];
@@ -47,7 +48,7 @@ function render() {
   app.innerHTML = "";
 
   var shell = document.createElement("div");
-  shell.className = "app-shell";
+  shell.className = "app-shell app-shell--accent";
 
   var content = document.createElement("div");
   content.className = "app-content";
@@ -115,6 +116,9 @@ function renderStart() {
 
   el.innerHTML =
     '<header class="hero">' +
+    '<img class="hero__logo" src="' +
+    LOGO_PATH +
+    '" alt="Fignny" width="72" height="72" />' +
     '<h1 class="title">Fignny QUEST</h1>' +
     '<button type="button" class="btn btn--link" data-action="about">このサイトについて</button>' +
     "</header>" +
@@ -285,9 +289,6 @@ function renderQuiz() {
     '<main class="question-area' +
     (mastered ? " question-area--mastered" : "") +
     '">' +
-    '<div class="question-area__toolbar">' +
-    '<button type="button" class="btn btn--ghost btn--sm" data-action="home">トップに戻る</button>' +
-    "</div>" +
     '<label class="master-check">' +
     '<input type="checkbox" data-action="master"' +
     (mastered ? " checked" : "") +
@@ -307,7 +308,10 @@ function renderQuiz() {
     (currentIndex === 0 ? " disabled" : "") +
     ">戻る</button>" +
     '<button type="button" class="btn btn--primary" data-action="next">進む</button>' +
-    "</nav>";
+    "</nav>" +
+    '<div class="quiz-footer">' +
+    '<button type="button" class="btn btn--ghost btn--sm" data-action="home">トップページへ戻る</button>' +
+    "</div>";
 
   el.querySelector('[data-action="master"]').addEventListener("change", function () {
     setMastered(currentEdition.id, questionIndex, this.checked);

@@ -3,7 +3,7 @@ var EDITIONS = [
   {
     id: "chrome",
     name: "Chrome編",
-    icon: "icons/chrome.png",
+    icon: "images/icon/chrome.png",
     questions: [
       {
         text: "新しいウィンドウを開くショートカットを実行してください",
@@ -30,7 +30,7 @@ var EDITIONS = [
   {
     id: "vscode",
     name: "VSCode編",
-    icon: "icons/vscode.png",
+    icon: "images/icon/vscode.png",
     questions: [
       {
         text: "メニューバーを開閉するショートカットを実行してください",
@@ -57,7 +57,7 @@ var EDITIONS = [
   {
     id: "slack",
     name: "Slack編",
-    icon: "icons/slack.png",
+    icon: "images/icon/slack.png",
     questions: [
       {
         text: "チャンネルを切り替えるショートカットを実行してください",

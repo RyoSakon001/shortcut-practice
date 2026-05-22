@@ -33,11 +33,27 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  right: -3rem;
+  bottom: -3rem;
+  width: 14rem;
+  height: 14rem;
+  background: url("../images/fignny_chan.jpg") center / cover no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
 }
 
 #app {
   width: 100%;
   max-width: 28rem;
+  position: relative;
+  z-index: 1;
 }
 
 .app-shell {
@@ -46,6 +62,7 @@ body {
   flex-direction: column;
   gap: 1.25rem;
 }
+
 
 .app-content {
   width: 100%;
@@ -236,11 +253,12 @@ body {
   color: var(--muted);
 }
 
-.question-area__toolbar {
-  width: 100%;
+.quiz-footer {
   display: flex;
-  justify-content: flex-start;
-  margin-bottom: 0.5rem;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
 }
 
 .master-check {
@@ -393,6 +411,15 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+}
+
+.hero__logo {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 20px rgba(37, 71, 240, 0.18);
 }
 
 .btn--link {
