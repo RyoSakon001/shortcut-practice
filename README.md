@@ -28,6 +28,6 @@ python3 -m http.server 8080
 
 ## GitHub Pages へのデプロイ
 
-1. リポジトリの **Settings → Pages → Build and deployment** で **GitHub Actions** を選択
-2. `main` ブランチへ push すると `.github/workflows/deploy.yml` がデプロイを実行します
+1. リポジトリの **Settings → Pages → Build and deployment** で **Deploy from a branch** を選択
+2. Branch: `main`、Folder: `/ (root)` を指定して保存
 3. 公開 URL: `https://<ユーザー名>.github.io/shortcut-practice/`
