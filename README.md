@@ -1,4 +1,4 @@
-# ショートカット練習
+# Fignny QUEST
 
 ショートカットを実行してから「進む」で進む、練習用 Web アプリです（HTML / CSS / JavaScript のみ）。
 
@@ -13,12 +13,16 @@ python3 -m http.server 8080
 
 ## 問題の追加
 
-`js/questions.js` の `QUESTIONS` 配列にオブジェクトを追加します。
+`js/questions.js` の `EDITIONS` に編を追加するか、既存編の `questions` 配列にオブジェクトを追加します。
 
 ```js
 {
-  text: "問題文",
-  hint: "⌘ + S",
+  id: "chrome",
+  name: "Chrome編",
+  icon: "icons/chrome.png",
+  questions: [
+    { text: "問題文", hint: "⌘ + T" },
+  ],
 }
 ```
 

@@ -6,7 +6,12 @@ var SCREENS = {
 
 var screen = SCREENS.START;
 var currentIndex = 0;
+var currentEdition = null;
 var app = document.getElementById("app");
+
+function getQuestions() {
+  return currentEdition ? currentEdition.questions : [];
+}
 
 function render() {
   app.innerHTML = "";
@@ -29,27 +34,65 @@ function render() {
 function renderStart() {
   var el = document.createElement("div");
   el.className = "screen screen--start";
+
+  var cardsHtml = "";
+  for (var i = 0; i < EDITIONS.length; i++) {
+    var edition = EDITIONS[i];
+    cardsHtml +=
+      '<button type="button" class="edition-card" data-edition="' +
+      escapeHtml(edition.id) +
+      '">' +
+      '<img class="edition-card__icon" src="' +
+      escapeHtml(edition.icon) +
+      '" alt="" width="48" height="48" />' +
+      '<span class="edition-card__name">' +
+      escapeHtml(edition.name) +
+      "</span>" +
+      '<span class="edition-card__count">' +
+      edition.questions.length +
+      " 問</span>" +
+      "</button>";
+  }
+
   el.innerHTML =
     '<header class="hero">' +
-    '<h1 class="title">ショートカット練習</h1>' +
-    '<p class="subtitle">表示された操作を、ショートカットで実行してから「進む」を押してください</p>' +
+    '<h1 class="title">Fignny QUEST</h1>' +
+    '<p class="subtitle">編を選び、表示された操作をショートカットで実行してから「進む」を押してください</p>' +
     "</header>" +
-    '<button type="button" class="btn btn--primary" data-action="start">スタート</button>';
-  el.querySelector('[data-action="start"]').addEventListener("click", startQuiz);
+    '<div class="edition-list">' +
+    cardsHtml +
+    "</div>";
+
+  var buttons = el.querySelectorAll("[data-edition]");
+  for (var j = 0; j < buttons.length; j++) {
+    buttons[j].addEventListener("click", function () {
+      startQuiz(this.getAttribute("data-edition"));
+    });
+  }
+
   return el;
 }
 
 function renderQuiz() {
-  var q = QUESTIONS[currentIndex];
+  var questions = getQuestions();
+  var q = questions[currentIndex];
   var el = document.createElement("div");
   el.className = "screen screen--quiz";
 
   el.innerHTML =
-    '<p class="progress">' +
+    '<div class="quiz-header">' +
+    '<img class="quiz-header__icon" src="' +
+    escapeHtml(currentEdition.icon) +
+    '" alt="" width="24" height="24" />' +
+    '<span class="quiz-header__name">' +
+    escapeHtml(currentEdition.name) +
+    "</span>" +
+    '<span class="progress">' +
     (currentIndex + 1) +
     " / " +
-    QUESTIONS.length +
-    "</p>" +
+    questions.length +
+    "</span>" +
+    "</div>" +
     '<main class="question-area">' +
     '<p class="question">' +
     escapeHtml(q.text) +
@@ -71,19 +114,37 @@ function renderQuiz() {
 }
 
 function renderComplete() {
+  var questions = getQuestions();
   var el = document.createElement("div");
   el.className = "screen screen--complete";
   el.innerHTML =
+    '<img class="complete-icon" src="' +
+    escapeHtml(currentEdition.icon) +
+    '" alt="" width="56" height="56" />' +
     '<p class="complete-message">お疲れ様でした！</p>' +
-    '<p class="complete-sub">全 ' +
-    QUESTIONS.length +
+    '<p class="complete-sub">' +
+    escapeHtml(currentEdition.name) +
+    " — 全 " +
+    questions.length +
     " 問を完了しました</p>" +
-    '<button type="button" class="btn btn--primary" data-action="retry">もう一度やる</button>';
-  el.querySelector('[data-action="retry"]').addEventListener("click", resetToStart);
+    '<button type="button" class="btn btn--primary" data-action="retry">もう一度やる</button>' +
+    '<button type="button" class="btn btn--secondary" data-action="menu">メニューに戻る</button>';
+  el.querySelector('[data-action="retry"]').addEventListener("click", retryEdition);
+  el.querySelector('[data-action="menu"]').addEventListener("click", resetToStart);
   return el;
 }
 
-function startQuiz() {
+function startQuiz(editionId) {
+  currentEdition = getEditionById(editionId);
+  if (!currentEdition) {
+    return;
+  }
+  currentIndex = 0;
+  screen = SCREENS.QUIZ;
+  render();
+}
+
+function retryEdition() {
   currentIndex = 0;
   screen = SCREENS.QUIZ;
   render();
@@ -97,7 +158,8 @@ function goBack() {
 }
 
 function goNext() {
-  if (currentIndex < QUESTIONS.length - 1) {
+  var questions = getQuestions();
+  if (currentIndex < questions.length - 1) {
     currentIndex += 1;
     render();
   } else {
@@ -109,11 +171,12 @@ function goNext() {
 function resetToStart() {
   screen = SCREENS.START;
   currentIndex = 0;
+  currentEdition = null;
   render();
 }
 
 function escapeHtml(str) {
-  return str
+  return String(str)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
